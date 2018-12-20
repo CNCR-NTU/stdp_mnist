@@ -1,4 +1,4 @@
-# stdp_mnist
+#stdp_mnist
 
 Please visit the authors [website](https://github.com/peter-u-diehl/stdp-mnist) for further details.
 
