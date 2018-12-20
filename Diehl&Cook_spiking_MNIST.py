@@ -15,9 +15,10 @@ import brian_no_units  #import it to deactivate unit checking --> This should NO
 import brian as b
 from struct import unpack
 from brian import *
+import os.path
 
 # specify the location of the MNIST data
-MNIST_data_path = ''
+MNIST_data_path =  os.path.expanduser('~')+'/Development/cifar-10_snn/'
 
 #------------------------------------------------------------------------------ 
 # functions
