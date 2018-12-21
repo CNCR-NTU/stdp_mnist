@@ -18,7 +18,7 @@ from brian import *
 import os.path
 
 # specify the location of the MNIST data
-MNIST_data_path =  os.path.expanduser('~')+'/Development/cifar-10_snn/'
+MNIST_data_path =  os.path.expanduser('~')+'/Development/mnist_snn/'
 
 #------------------------------------------------------------------------------ 
 # functions
@@ -208,7 +208,7 @@ print 'time needed to load test set:', end - start
 #------------------------------------------------------------------------------ 
 # set parameters and equations
 #------------------------------------------------------------------------------
-test_mode = True
+test_mode = False #True
 
 b.set_global_preferences( 
                         defaultclock = b.Clock(dt=0.5*b.ms), # The default clock to use if none is provided or defined in any enclosing scope.
@@ -238,12 +238,9 @@ else:
     weight_path = data_path + 'random/'  
     num_examples = 60000 * 3
     use_testing_set = False
-    do_plot_performance = True
-    if num_examples <= 60000:    
-        record_spikes = True
-    else:
-        record_spikes = True
-    ee_STDP_on = True
+    do_plot_performance = False #True
+    record_spikes = False #True
+    ee_STDP_on = False#True
 
 
 ending = ''
