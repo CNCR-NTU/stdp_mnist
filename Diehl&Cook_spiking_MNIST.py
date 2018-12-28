@@ -129,7 +129,7 @@ def plot_2d_input_weights():
     fig = b.figure(fig_num, figsize = (18, 18))
     im2 = b.imshow(weights, interpolation = "nearest", vmin = 0, vmax = wmax_ee, cmap = cmap.get_cmap('hot_r'))
     b.colorbar(im2)
-    b.title('weights of connection' + name)
+    b.title('weights of connection ' + name)
     fig.canvas.draw()
     return im2, fig
     
@@ -238,9 +238,10 @@ else:
     weight_path = data_path + 'random/'  
     num_examples = 60000 * 3
     use_testing_set = False
-    do_plot_performance = False #True
-    record_spikes = False #True
+    do_plot_performance = False#True
+    record_spikes = False#True
     ee_STDP_on = False#True
+    plot_weights=False
 
 
 ending = ''
@@ -430,7 +431,7 @@ previous_spike_count = np.zeros(n_e)
 assignments = np.zeros(n_e)
 input_numbers = [0] * num_examples
 outputNumbers = np.zeros((num_examples, 10))
-if not test_mode:
+if plot_weights: #not test_mode:
     input_weight_monitor, fig_weights = plot_2d_input_weights()
     fig_num += 1
 if do_plot_performance:
@@ -454,7 +455,7 @@ while j < (int(num_examples)):
             
     if j % update_interval == 0 and j > 0:
         assignments = get_new_assignments(result_monitor[:], input_numbers[j-update_interval : j])
-    if j % weight_update_interval == 0 and not test_mode:
+    if j % weight_update_interval == 0 and plot_weights : #not test_mode:
         update_2d_input_weights(input_weight_monitor, fig_weights)
     if j % save_connections_interval == 0 and j > 0 and not test_mode:
         save_connections(str(j))
